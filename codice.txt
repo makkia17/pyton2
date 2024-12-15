@@ -1,0 +1,89 @@
+# Definizione di variabili globali
+valorePerimetri = []
+valoreAree = []
+listaForme = ["quadrato", "cerchio", "triangolo"]
+
+def restituisciPerimetroQuadrato(lato):
+    return lato * 4
+
+def restituisciAreaQuadrato(lato):
+    return lato ** 2
+
+def restituisciPerimetroCerchio(raggio):
+    return 2 * 3.14 * raggio
+
+def restituisciAreaCerchio(raggio):
+    return 3.14 * (raggio ** 2)
+
+def restituisciAreaTriangolo(base, altezza):
+    return (base * altezza) / 2
+
+def restituisciPerimetroTriangolo(lato):
+    return lato * 3
+
+# Funzione principale
+def main():
+    print("Scegli una figura geometrica tra: quadrato, cerchio, triangolo")
+    
+    scegliForme = input("Immetti la tua scelta: ").lower()
+
+    if scegliForme == listaForme[0]:  # Quadrato
+        lato = int(input("Immetti il lato del quadrato: "))
+        perimetro = restituisciPerimetroQuadrato(lato)
+        area = restituisciAreaQuadrato(lato)
+        print(f"Perimetro del quadrato: {perimetro}")
+        print(f"Area del quadrato: {area}")
+        valorePerimetri.append(perimetro)
+        valoreAree.append(area)
+
+    elif scegliForme == listaForme[1]:  # Cerchio
+        raggio = int(input("Immetti il raggio del cerchio: "))
+        perimetro = restituisciPerimetroCerchio(raggio)
+        area = restituisciAreaCerchio(raggio)
+        print(f"Perimetro del cerchio: {perimetro}")
+        print(f"Area del cerchio: {area}")
+        valorePerimetri.append(perimetro)
+        valoreAree.append(area)
+
+    elif scegliForme == listaForme[2]:  # Triangolo
+        base = int(input("Immetti la base del triangolo: "))
+        altezza = int(input("Immetti l'altezza del triangolo: "))
+        lato = int(input("Immetti il lato del triangolo: "))
+        perimetro = restituisciPerimetroTriangolo(lato)
+        area = restituisciAreaTriangolo(base, altezza)
+        print(f"Perimetro del triangolo: {perimetro}")
+        print(f"Area del triangolo: {area}")
+        valorePerimetri.append(perimetro)
+        valoreAree.append(area)
+
+    else:
+        print("Forma non valida! Riprova.")
+        return
+
+    # Seconda figura
+    print("\nScegli una nuova figura geometrica per i nuovi calcoli")
+    scegliFormeNuove = input("Immetti la tua scelta: ").lower()
+
+    if scegliFormeNuove == listaForme[0]:  # Quadrato
+        perimetro = restituisciPerimetroQuadrato(valorePerimetri[0])
+        area = restituisciAreaQuadrato(valoreAree[0])
+        print(f"Nuovo perimetro del quadrato: {perimetro}")
+        print(f"Nuova area del quadrato: {area}")
+
+    elif scegliFormeNuove == listaForme[1]:  # Cerchio
+        perimetro = restituisciPerimetroCerchio(valorePerimetri[0])
+        area = restituisciAreaCerchio(valoreAree[0])
+        print(f"Nuovo perimetro del cerchio: {perimetro}")
+        print(f"Nuova area del cerchio: {area}")
+
+    elif scegliFormeNuove == listaForme[2]:  # Triangolo
+        perimetro = restituisciPerimetroTriangolo(valorePerimetri[0])
+        area = restituisciAreaTriangolo(valoreAree[0], valoreAree[0])
+        print(f"Nuovo perimetro del triangolo: {perimetro}")
+        print(f"Nuova area del triangolo: {area}")
+
+    else:
+        print("Forma non valida!")
+
+if __name__ == "__main__":
+    main()
